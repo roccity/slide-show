@@ -2,4 +2,27 @@
     <string name="app_name">Slide-Show</string>
     <string name="action_settings">Settings</string>
     <string name="app_logo_top">app_logo_top</string>
+
+
+    <string name="productnamestring">Product Name</string>
+    <string name="productquanitystring">Product Quanity</string>
+    <string name="addstring">Add</string>
+    <string name="findstring">Find</string>
+    <string name="deletestring">Delete</string>
+    <string name="prodid_string">Product ID</string>
+    <string name="not_ass">Not assignned</string>
+    <string name="prodname_string">Product Name</string>
+
+
+
+
+    <string name="quanity_text">Product Quanity</string>
+    <string name="add_string">Add</string>
+    <string name="find_string">Find</string>
+    <string name="delete_string">Delete</string>
+    <string name="autoID_string">Automotive ID</string>
+    <string name="auto_model_string">Automobile Model</string>
+    <string name="model_quanity_string">Model Quanity</string>
+    <string name="database_string">DataBase</string>
+
 </resources>
