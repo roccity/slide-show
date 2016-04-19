@@ -1,23 +1,29 @@
 package com.djenerson.slide_show;
 
+// Activity 1 launch code courtesy of Professor Eric Braude
+//Activity 2 database code courtesy Smyth, Neil (2015-12-06). Android Studio Development Essentials:
+// Android 6 Edition (p.466) applied to Activity AutoDatabase by Daniel Jenerson
+
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.os.Handler;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.EditText;
+import android.widget.TextView;
+
+
+
 
 
 
@@ -44,20 +50,34 @@ public class Slide_showActivity extends Activity {
         setContentView(R.layout.activity_slide_show);
 
         final Handler mHandler = new Handler();
-
         // switchButton (button4 in activity_AutoDatabase) starts AutoDatabaseActivity
-        Button switchButton = (Button)findViewById(R.id.button4);
+        Button switchButton = (Button) findViewById(R.id.button4);
+        Button internetButton = (Button) findViewById(R.id.button5);
+
         final Intent AutoDatabase =
                 new Intent(this, AutoDatabase.class);
+        final Intent Internet =
+                new Intent(this, Internet.class);
+
         switchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(AutoDatabase);
             }
-        });
+        }
+        );
+
+        internetButton.setOnClickListener(new View.OnClickListener()
+                                        {
+                                            public void onClick(View v) {
+                                                startActivity(Internet);
+                                            }
+                                        }
+        );
+
 
 
         // Create runnable for posting
-        final Runnable mUpdateResults = new Runnable() {
+       ; final Runnable mUpdateResults = new Runnable() {
             public void run() {
 
                 AnimateandSlideShow();
@@ -68,22 +88,15 @@ public class Slide_showActivity extends Activity {
         // set time interval between slides
 
         int delay = 1000; // delay for 1 sec.
-
         int period = 15000; // repeat every 4 sec.
-
         Timer timer = new Timer();
 
         timer.scheduleAtFixedRate(new TimerTask() {
-
             public void run() {
-
                 mHandler.post(mUpdateResults);
-
             }
 
         }, delay, period);
-
-
 
     }
 
@@ -94,29 +107,16 @@ public class Slide_showActivity extends Activity {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
-
-        /**
+    /**
          * Helper method to start the animation on the splash screen
          */
     private void AnimateandSlideShow() {
-
-
         slidingimage = (ImageView)findViewById(R.id.ImageView3_Left);
         slidingimage.setImageResource(IMAGE_IDS[currentimageindex%IMAGE_IDS.length]);
-
         currentimageindex++;
-
         Animation rotateimage = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-
-
         slidingimage.startAnimation(rotateimage);
-
-
     }
-
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -134,7 +134,7 @@ public class Slide_showActivity extends Activity {
     }
 
 // lifecycle methods which act as event handlers when the state of an Activity changes.
-    
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -185,5 +185,7 @@ public class Slide_showActivity extends Activity {
         super.onRestoreInstanceState(savedInstanceState);
         Log.i(TAG, "onRestoreInstanceState");
     }
+
+
 }
 

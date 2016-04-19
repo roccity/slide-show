@@ -14,8 +14,6 @@
     <string name="prodname_string">Product Name</string>
 
 
-
-
     <string name="quanity_text">Product Quanity</string>
     <string name="add_string">Add</string>
     <string name="find_string">Find</string>
@@ -24,5 +22,21 @@
     <string name="auto_model_string">Automobile Model</string>
     <string name="model_quanity_string">Model Quanity</string>
     <string name="database_string">DataBase</string>
+    <string name="internet_strings">Internet</string>
+
+
+    <string name="telephone_string">Telephone Access</string>
+    <string name="call_string">CALL</string>
+
+    <string name="phone_string">Phone</string>
+    <string name="telephone_strin">Telephone</string>
+    <string name="sales_string">Sales Phone</string>
+    <string name="Make_call_string">MAKE A CALL</string>
+    <string name="phone_call_string">Phone</string>
+    <string name="internet_access">Internet Access</string>
+    <string name="internet_string">Internet Access</string>
+    <string name="research_string">Auto Research</string>
+    <string name="connect_string">Connect</string>
+
 
 </resources>

@@ -37,7 +37,12 @@
         android:text="@string/database_string"
         android:id="@+id/button4"
         android:onClick="onClick" />
-        android:layout_gravity="center_horizontal" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/internet_strings"
+        android:id="@+id/button5"
+        android:onClick="onClick" />
 
 </LinearLayout>
