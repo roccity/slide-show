@@ -2,9 +2,6 @@ package com.djenerson.slide_show;
 //Activity 2 database code courtesy Smyth, Neil (2015-12-06). Android Studio Development Essentials:
 // Android 6 Edition (p.466) applied to Activity AutoDatabase by Daniel Jenerson
 
-//The completed class contains private data members for the internal storage of data columns
-// from database entries and a set of methods to get and set those values.
-
 public class Product {private int _id;
     private String _productname;
     private int _quantity;

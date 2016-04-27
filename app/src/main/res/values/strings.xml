@@ -37,6 +37,7 @@
     <string name="internet_string">Internet Access</string>
     <string name="research_string">Auto Research</string>
     <string name="connect_string">Connect</string>
+    <string name="fake_alarm_message">"---Customer Appointment 5 min ---"</string>
 
 
 </resources>

@@ -26,13 +26,9 @@ import java.net.URL;
 
 public class Internet extends AppCompatActivity {
 
-
-    // To create a task separate from the main UI thread
     private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
-            // Pre: urls[0] is the parameter of execute() (i.e., when invoked by an AsycTask object)
-            // Post = Postconditions for downloadUrl(urls[0])
             try {
                 return downloadUrl(urls[0]);
             } catch (IOException e) {
@@ -41,7 +37,6 @@ public class Internet extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String aResult) {
-            // Post: aResult is toasted
             toast(aResult);
         }
     }
@@ -49,7 +44,6 @@ public class Internet extends AppCompatActivity {
     // ***********************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Post: UI appears, also long Toast in top left that app started
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internet2);
 
@@ -57,15 +51,9 @@ public class Internet extends AppCompatActivity {
         toast.setGravity(Gravity.TOP|Gravity.LEFT, 0, 0);
         toast.show();
     }
-
-    // ***********************************************************************
     private String downloadUrl(String aUrl) throws IOException {
-        // Post1: Return = first NUM_CHARS_DISPLAYED characters of page at aUrl, if possible
-        // Post2: No opened InputStreams remain
-
         InputStream inStream = null;
         final int NUM_CHARS_DISPLAYED = 500;
-
         try {
             URL url = new URL(aUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -77,9 +65,6 @@ public class Internet extends AppCompatActivity {
             inStream = conn.getInputStream();
             String contentAsString = readIt(inStream, NUM_CHARS_DISPLAYED);
             return contentAsString;
-
-
-        // Close InputStream after the app completed use
     } finally {
         if (inStream != null) {
             inStream.close();
@@ -87,11 +72,7 @@ public class Internet extends AppCompatActivity {
     }
     }
 
-
-// ***********************************************************************
 public void onClickHandler(View view) {
-    // Post1: networkInfo is current NetworkInfo value
-    // Post2: No Internet connection or = postconditions of DownloadWebPageTask.execute()
 
     ConnectivityManager connMgr = (ConnectivityManager)
             getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -105,11 +86,8 @@ public void onClickHandler(View view) {
         toast("No network connection available.");
     }
 }
-
-// ***********************************************************************
 public String readIt(InputStream anInStream, int aLen)
-        throws IOException, UnsupportedEncodingException {
-    // Post: return = first aLen characters of anInStream
+        throws IOException {
     Reader reader = null;
     reader = new InputStreamReader(anInStream, "UTF-8");
     char[] buffer = new char[aLen];
@@ -117,14 +95,12 @@ public String readIt(InputStream anInStream, int aLen)
     return new String(buffer);
 }
 
-// ***********************************************************************
 @Override
 public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.menu_main_htt, menu);
     return true;
 }
 
-// ***********************************************************************
 @Override
 public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
@@ -134,7 +110,6 @@ public boolean onOptionsItemSelected(MenuItem item) {
     return super.onOptionsItemSelected(item);
 }
 
-// ***********************************************************************
 private void toast(String aToast){
     Toast.makeText(getApplicationContext(), aToast, Toast.LENGTH_LONG).show();
 }

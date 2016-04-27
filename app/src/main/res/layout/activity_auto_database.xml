@@ -85,21 +85,24 @@
             android:layout_height="wrap_content"
             android:text="@string/add_string"
             android:id="@+id/button"
-            android:onClick="newProduct" />
+            android:onClick="newProduct"
+            android:background="#2427dd" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/find_string"
             android:id="@+id/button2"
-            android:onClick="lookupProduct" />
+            android:onClick="lookupProduct"
+            android:background="#1c3ddf" />
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="59dp"
             android:text="@string/delete_string"
             android:id="@+id/button3"
-            android:onClick="removeProduct" />
+            android:onClick="removeProduct"
+            android:backgroundTint="#192ae6" />
 
     </LinearLayout>
 </LinearLayout>

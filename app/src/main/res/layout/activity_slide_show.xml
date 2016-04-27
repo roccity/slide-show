@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="Exit"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:background="#e11717" />
 
     <ImageView
         android:id="@+id/ImageView3_Left"
@@ -36,13 +37,15 @@
         android:layout_height="wrap_content"
         android:text="@string/database_string"
         android:id="@+id/button4"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:backgroundTint="#e81111" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/internet_strings"
         android:id="@+id/button5"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:background="#e81919" />
 
 </LinearLayout>

@@ -12,28 +12,13 @@ import android.view.View;//This class represents the basic building block for us
 import android.widget.TextView;// Displays text to the user and optionally allows them to edit it.
 import android.widget.EditText;// EditText is a thin veneer over TextView that configures itself to be editable
 
-//" the application will consist of an activity and a database handler class.
-// The database handler will be a subclass of SQLiteOpenHelper
-// and will provide an abstract layer between the underlying SQLite database and the activity class,
-// with the activity calling on the database handler to interact with the database
-// (adding, removing and querying database entries).
-// In order to implement this interaction in a structured way, a third class will need to be implemented
-// to hold the database entry data as it is passed between the activity and the handler.
-// This is actually a very simple class capable of holding product ID, product name and product quantity values,
-// together with getter and setter methods for accessing these values.
-// Instances of this class can then be created within the activity and database handler and passed back and forth as needed.
-// Essentially, this class can be thought of as representing the database model."
-//Smyth, Neil (2015-12-06). Android Studio Development Essentials: Android 6 Edition (p. 466).
-
 public class AutoDatabase extends AppCompatActivity {
-    // code to identify the views in the user interface and to implement the three “onClick” target methods:
     TextView idView;
     EditText productBox;
     EditText quantityBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //code to identify the views in the user interface and to implement the three “onClick” target methods:
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_database);
         idView = (TextView) findViewById(R.id.productID);

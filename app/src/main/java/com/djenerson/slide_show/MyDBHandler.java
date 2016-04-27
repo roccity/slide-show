@@ -9,13 +9,6 @@ import android.database.sqlite.SQLiteDatabase;// SQLiteDatabase has methods to c
 // and perform other common database management tasks.
 import android.database.sqlite.SQLiteOpenHelper;// A helper class to manage database creation and version management
 
-// The data handler will be implemented by subclassing from the Android SQLiteOpenHelper class
-//adding the constructor, onCreate() and onUpgrade() methods.
-// Since the handler will be required to add, query and delete data on behalf of the activity component,
-// corresponding methods will also need to be added to the class.
-
-// declare constants for the database name, table name, table columns and database version and  add the constructor method
-
 public class MyDBHandler extends SQLiteOpenHelper { private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "productDB.db";
     public static final String TABLE_PRODUCTS = "products";
@@ -23,13 +16,9 @@ public class MyDBHandler extends SQLiteOpenHelper { private static final int DAT
     public static final String COLUMN_PRODUCTNAME = "productname";
     public static final String COLUMN_QUANTITY = "quantity";
     public MyDBHandler(Context context, String name,
-                       SQLiteDatabase.CursorFactory factory, int version) { super(context, DATABASE_NAME, factory, DATABASE_VERSION);
-                        }
-    // "the onCreate() method is implemented so that the products table is created when the database is first initialized.
-    // This involves constructing a SQL CREATE statement containing instructions to create a new table
-    // with the appropriate columns and then passing that through to the execSQL() method of the SQLiteDatabase object
-    // passed as an argument to onCreate()"
-    // Smyth, Neil (2015-12-06). Android Studio Development Essentials: Android 6 Edition (p. 469).
+                       SQLiteDatabase.CursorFactory factory, int version)
+    { super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PRODUCTS_TABLE =
@@ -37,15 +26,6 @@ public class MyDBHandler extends SQLiteOpenHelper { private static final int DAT
                         + COLUMN_PRODUCTNAME + " TEXT," + COLUMN_QUANTITY + " INTEGER" + ")";
         db.execSQL(CREATE_PRODUCTS_TABLE);
     }
-
-// "The method to insert database records will be named addProduct()
-// and will take as an argument an instance of our Product data model class.
-// A ContentValues object will be created in the body of the method and primed with key-value pairs
-// for the data columns extracted from the Product object.
-// Next, a reference to the database will be obtained via a call to getWritableDatabase()
-// followed by a call to the insert() method of the returned database object.
-// Finally, once the insertion has been performed, the database needs to be closed:"
-// Smyth, Neil (2015-12-06). Android Studio Development Essentials: Android 6 Edition (p. 470)
 
     public void addProduct(Product product) {
         ContentValues values = new ContentValues();
@@ -55,11 +35,6 @@ public class MyDBHandler extends SQLiteOpenHelper { private static final int DAT
         db.insert(TABLE_PRODUCTS, null, values);
         db.close();
     }
-
-    //"The method to query the database will be named findProduct()
-    // and will take as an argument a String object containing the name of the product to be located.
-    // Using this string, a SQL SELECT statement will be constructed to find all matching records in the table."
-    // Smyth, Neil (2015-12-06). Android Studio Development Essentials: Android 6 Edition (p. 470).
 
     public Product findProduct(String productname)
     {String query ="Select * FROM "+ TABLE_PRODUCTS +" WHERE "+ COLUMN_PRODUCTNAME + " =\"" + productname +"\"";
@@ -72,12 +47,6 @@ public class MyDBHandler extends SQLiteOpenHelper { private static final int DAT
             cursor.close();  } else { product = null;
         } db.close();
         return product; }
-
-    // "The deletion method will be named deleteProduct()
-    // nd will accept as an argument the entry to be deleted in the form of a Product object.
-    // The method will use a SQL SELECT statement to search for the entry based on the product name and,
-    // if located, delete it from the table. The success or otherwise of the deletion will be reflected in a Boolean return value:"
-    //Smyth, Neil (2015-12-06). Android Studio Development Essentials: Android 6 Edition (p. 471).
 
     public boolean deleteProduct(String productname) { boolean result = false;
         String query = "Select * FROM "+TABLE_PRODUCTS +" WHERE "+ COLUMN_PRODUCTNAME +" =\""+ productname +"\"";
